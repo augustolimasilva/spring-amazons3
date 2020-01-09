@@ -32,4 +32,7 @@ public class EquipmentDTO {
 
     @NotNull(message = "{validation.photo.notnull}")
     private MultipartFile photo;
+
+    @NotNull(message = "{validation.taxDepreciation.notnull}")
+    private double taxDepreciation;
 }

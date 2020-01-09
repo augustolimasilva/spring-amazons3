@@ -2,14 +2,15 @@ package com.example.amazons3.service;
 
 import com.example.amazons3.Util.Response;
 import com.example.amazons3.model.Equipment;
+import com.example.amazons3.model.dto.EquipmentDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IEquipmentService {
 
-    Equipment insert(Equipment equipment);
+    Equipment insert(EquipmentDTO EquipmentDTO);
 
-    Equipment alter(Equipment equipment, Long id);
+    Equipment alter(EquipmentDTO EquipmentDTO, Long id);
 
     Response deleteById(Long id);
 

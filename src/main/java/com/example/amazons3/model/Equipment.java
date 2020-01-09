@@ -34,6 +34,9 @@ public class Equipment {
     @Column(name = "code", length = 100, nullable = false)
     private String code;
 
+    @Column(name = "taxDepreciation", nullable = false)
+    private double taxDepreciation;
+
     @Column(name = "linkImage", length = 200, nullable = false)
     private String linkImage;
 }
