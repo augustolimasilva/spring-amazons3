@@ -34,7 +34,7 @@ public class UploadAws {
 
             PutObjectRequest request = new PutObjectRequest(BUCKET, file.getOriginalFilename(), f);
             amazonS3.putObject(request.withCannedAcl(CannedAccessControlList.PublicRead));
-            pathAws = String.format("https://%s.s3.sa-east-1.amazonaws.com/%s", BUCKET , file.getOriginalFilename());
+            pathAws = String.format("https://%s.s3-sa-east-1.amazonaws.com/%s", BUCKET , file.getOriginalFilename());
             return  pathAws;
         } catch (Exception e) {
             throw new RuntimeException(e);
