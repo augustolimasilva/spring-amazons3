@@ -1,12 +1,13 @@
 package com.example.amazons3.service.impl;
 
-import com.example.amazons3.Util.Constants;
-import com.example.amazons3.Util.Response;
+import com.example.amazons3.util.Constants;
+import com.example.amazons3.util.Response;
 import com.example.amazons3.exception.CustomException;
 import com.example.amazons3.model.Equipment;
 import com.example.amazons3.model.dto.EquipmentDTO;
 import com.example.amazons3.repository.IEquipmentRepository;
 import com.example.amazons3.service.IEquipmentService;
+import com.example.amazons3.util.UploadAws;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,9 +23,15 @@ public class EquipmentService implements IEquipmentService {
     @Autowired
     IEquipmentRepository equipmentRepository;
 
+    @Autowired
+    UploadAws uploadAws;
+
     @Override
     public Equipment insert(EquipmentDTO equipmentDTO) {
         Equipment equipment = new ModelMapper().map(equipmentDTO, Equipment.class);
+
+        equipment.setLinkImage(uploadAws.write(equipmentDTO.getPhoto()));
+
         return equipmentRepository.save(equipment);
     }
 

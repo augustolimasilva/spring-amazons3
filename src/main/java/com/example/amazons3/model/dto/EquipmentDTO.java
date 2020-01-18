@@ -24,10 +24,8 @@ public class EquipmentDTO {
     @Length(min = 1, max = 100, message = "{validation.model.length}")
     private String model;
 
-    @NotNull(message = "{validation.mounth.notnull}")
     private int mounth;
 
-    @NotNull(message = "{validation.year.notnull}")
     private int year;
 
     @NotNull(message = "{validation.photo.notnull}")

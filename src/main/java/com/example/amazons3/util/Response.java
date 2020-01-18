@@ -1,4 +1,4 @@
-package com.example.amazons3.Util;
+package com.example.amazons3.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

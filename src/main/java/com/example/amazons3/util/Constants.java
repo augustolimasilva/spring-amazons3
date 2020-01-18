@@ -1,4 +1,4 @@
-package com.example.amazons3.Util;
+package com.example.amazons3.util;
 
 public final class Constants {
     public static final String EQUIPMENT_NOT_FOUND = "Equipamento não encontrado.";

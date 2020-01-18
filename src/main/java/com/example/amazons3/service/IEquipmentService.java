@@ -1,6 +1,6 @@
 package com.example.amazons3.service;
 
-import com.example.amazons3.Util.Response;
+import com.example.amazons3.util.Response;
 import com.example.amazons3.model.Equipment;
 import com.example.amazons3.model.dto.EquipmentDTO;
 import org.springframework.data.domain.Page;
