@@ -1,4 +1,4 @@
-# Projeto em Spring, fazendo upload de arquivo na amazon S3. 
+# Api Rest para upload de arquivos na amazon S3. 
 
 ## Pré requisitos
 - Maven 3
