@@ -1,0 +1,27 @@
+version: '3'
+services:
+  docker-app:
+    image: augustols/amazons3-app
+    ports:
+      - "8080:8080"
+    networks:
+      - s3-network
+    depends_on:
+      - s3-mysql
+
+  s3-mysql:
+    container_name: s3-mysql
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_DATABASE: amazons3
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    networks:
+      - s3-network
+    restart: always
+
+networks:
+    s3-network:
+      driver: bridge
