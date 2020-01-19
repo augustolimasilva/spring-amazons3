@@ -1,3 +1,23 @@
-Projeto em Spring, fazendo upload de arquivo na amazon S3. 
+# Projeto em Spring, fazendo upload de arquivo na amazon S3. 
 
-Necessário configurar seu usuário e chave do serviço de IAM da Aws.
+## Pré requisitos
+- Maven 3
+- Java 8
+- Docker
+
+## Preparando ambiente
+
+```
+mvn clean package dockerfile:build 
+```
+
+## Executando com Docker Compose
+
+```
+docker-compose up
+```
+
+## Acessando 
+
+- http://localhost:8080/equipment
+
