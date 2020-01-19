@@ -1,7 +1,7 @@
 # Api Rest para upload de arquivos na amazon S3. 
 
 ## Pré requisitos
-- Maven 3
+- Maven
 - Java 8
 - Docker
 
