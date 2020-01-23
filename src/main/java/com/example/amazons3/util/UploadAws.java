@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.Instant;
+import java.util.UUID;
 
 @Component
 public class UploadAws {
@@ -28,13 +30,18 @@ public class UploadAws {
 
     public String write(MultipartFile file) {
         try {
-            File f = new File(file.getOriginalFilename());
             String pathAws;
+            String originalNameFile = file.getOriginalFilename();
+            String extension = originalNameFile.substring(originalNameFile.lastIndexOf("."), originalNameFile.length());
+
+            String newNameFile = generateNameForThePicture(extension);
+
+            File f = new File(newNameFile);
             copyInputStreamToFile(file.getInputStream(), f);
 
-            PutObjectRequest request = new PutObjectRequest(BUCKET, file.getOriginalFilename(), f);
+            PutObjectRequest request = new PutObjectRequest(BUCKET, newNameFile, f);
             amazonS3.putObject(request.withCannedAcl(CannedAccessControlList.PublicRead));
-            pathAws = String.format("https://%s.s3-sa-east-1.amazonaws.com/%s", BUCKET , file.getOriginalFilename());
+            pathAws = String.format("https://%s.s3-sa-east-1.amazonaws.com/%s", BUCKET , newNameFile);
             return  pathAws;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -54,6 +61,13 @@ public class UploadAws {
             }
         }
 
+    }
+
+    private String generateNameForThePicture(String extension) {
+        UUID uuid = UUID.randomUUID();
+        String name = uuid.toString().substring(0, 20) + Instant.now();
+        name = name.replace(":", "-");
+        return name + extension;
     }
 
     public BasicAWSCredentials basicAWSCredentials(){
